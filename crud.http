@@ -1,1 +1,58 @@
-GET  http://localhost:1234/movies/genre/FantasY
+GET http://localhost:3000/movies
+
+###
+
+GET http://localhost:3000/movies/id/ab465288-56ac-11ef-954d-04d9f5ae1fce
+
+###
+GET  http://localhost:3000/movies/genre/action
+
+
+###
+
+POST http://localhost:1234/movies
+Content-Type: application/json
+
+{
+    "id": "ab462bd9-56ac-11ef-954d-04d9f5ae1fce",
+    "title": "The Dark Knight",
+    "year": 2008,
+    "director": "Christopher Nolan",
+    "duration": 152,
+    "poster": "https://i.ebayimg.com/images/g/yokAAOSw8w1YARbm/s-l1200.jpg",
+    "rate": 9.0,
+    "genres": [
+      "Drama",
+      "Action",
+      "Crime"
+    ]
+  }
+
+
+###
+
+GET http://localhost:1234/movies
+
+###
+
+PATCH http://localhost:1234/movies/4cc6e14a-cdd9-4a11-bfb2-ec399c74f3eb
+Content-Type: application/json
+
+{
+    "id": "4cc6e14a-cdd9-4a11-bfb2-ec399c74f3eb",
+    "title": "Alien, el octavo pasajeros",
+    "year": 1979,
+    "director": "Ridley Scott",
+    "duration": 117,
+    "poster": "https://i.ebayimg.com/images/g/4goAAOSwMyBe7hnQ/s-l1200.webp",
+    "rate": 8.5,
+    "genres": ["Action","drama","Sci-Fi"]
+  }
+
+
+###
+###
+
+DELETE  http://localhost:3000/movies/ab465288-56ac-11ef-954d-04d9f5ae1fce
+
+

@@ -1,12 +1,12 @@
 import express from "express";
-import { moviesRouter } from "./router/router_movies.js";
+import { movieRouter } from "./router/router_movies.js";
 
 const PUERTO = process.env.PORT || 3000;
 const app = express();
 
 app.disable("x-powered-by");
 
-app.use("/movies", moviesRouter);
+app.use("/movies", movieRouter);
 
 app.listen(PUERTO, () => {
   console.log(

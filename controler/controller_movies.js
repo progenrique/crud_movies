@@ -1,5 +1,9 @@
+import { getAllMovies } from "../model/model_novies.js";
+
 export const moviesController = {
-  getAllMovies: (req, res) => {
-    res.send("controller funcionando");
+  getAllMovies: async (req, res) => {
+    const movies = await getAllMovies();
+
+    res.send(movies);
   },
 };

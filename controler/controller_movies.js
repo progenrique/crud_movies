@@ -17,16 +17,13 @@ export const moviesController = {
   },
   getMoviesById: async (req, res) => {
     const movie = await getMoviesById(req.params.id);
-
     res.send(movie);
   },
   getMovieByGenre: async (req, res) => {
     const movie = await getMovieByGenre(req.params.genre);
-    if (movie.length === 0)
-      return res.status(404).end(`no hay pelicula con el genero ${genre}`);
     res.send(movie);
   },
-  addMovie: (req, res) => {
+  addMovie: async (req, res) => {
     const result = validacion(req.body);
     if (result.success == false) return res.status(400).send(result.error);
 
@@ -35,11 +32,10 @@ export const moviesController = {
       ...result.data,
     };
 
-    res.send(newMovie);
-    addMovie(newMovie);
+    const response = await addMovie(newMovie);
+    res.send(response);
   },
   updateMovie: async (req, res) => {
-    const id = req.params.id;
     const genres = req.body.genres.map(
       (genre) => genre.charAt(0).toUpperCase() + genre.slice(1)
     );
@@ -48,13 +44,11 @@ export const moviesController = {
     let result = validacionPartial(newBody);
 
     if (result.success == false) return res.status(400).send(result.error);
-    const oldMovie = await updateMovie(id, result.data);
-
-    res.send(oldMovie);
+    const response = await updateMovie(req.params.id, result.data);
+    res.send(response);
   },
   deleteMovie: async (req, res) => {
-    const id = req.params.id;
-    const response = await deleteMovie(id);
+    const response = await deleteMovie(req.params.id);
     res.send(response);
   },
 };

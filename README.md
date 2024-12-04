@@ -10,6 +10,7 @@ se puede obtener agregar actualizar y eliminar peliculas
 - Node.js
 - Express.js
 - MySQL
+- Clever Cloud 
 
 ## Endpoints Disponibles
 | Método | Ruta                                              | Descripción                           |
